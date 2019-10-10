@@ -1,0 +1,55 @@
+{ "peliculas": 
+    [ 
+      { 
+        "id": 1,
+        "titulo": "The Matrix",
+        "poster": "imagenes/foto1.jpg"
+      },
+      { 
+        "id": 2,
+        "titulo": "The Godfather",
+        "poster": "imagenes/foto2.jpg"
+      },
+      { 
+        "id": 3,
+        "titulo": "The Dark Knight",
+        "poster": "imagenes/foto3.jpg"
+      },
+      { 
+        "id": 4,
+        "titulo": "The Lord of the Rings",
+        "poster": "imagenes/foto4.jpg"
+      },
+      { 
+        "id": 5,
+        "titulo": "Pulp Fiction",
+        "poster": "imagenes/foto5.jpg"
+      },
+      { 
+        "id": 6,
+        "titulo": "Forrest Gump",
+        "poster": "imagenes/foto6.jpg"
+      },
+      { 
+        "id": 7,
+        "titulo": "Saving Private Ryan",
+        "poster": "imagenes/foto7.jpg"
+      },
+      { 
+        "id": 8,
+        "titulo": "Interstellar",
+        "poster": "imagenes/foto8.jpg"
+      },
+      { 
+        "id": 9,
+        "titulo": "The Pianist",
+        "poster": "imagenes/foto9.jpg"
+      },
+      { 
+        "id": 10,
+        "titulo": "Avengers: Endgame",
+        "poster": "imagenes/foto10.jpg"
+      }
+    ]
+  }
+  

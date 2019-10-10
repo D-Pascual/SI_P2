@@ -1,0 +1,10 @@
+#!/home/david/SI_P2/P2/public_html/si1pyenv/bin/python3.6
+# -*- coding: utf-8 -*-
+import re
+import sys
+
+from pylint import run_epylint
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(run_epylint())

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock%}
+
+{% block content %}
+    <nav class = "article">
+        {% for item in movies %}
+        <div class="foto"> <a href="#"><img src="{{url_for('static', filename=item.poster)}}" alt={{ item.titulo }}></a> <br>  {{ item.titulo }}  </div>
+        {% endfor %}
+    </nav>
+{% endblock %}

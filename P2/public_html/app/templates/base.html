@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>{% block title %} {% endblock %}- VideoClub</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Uso de url_for para obtener la ruta de elementos de la página -->
+  <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }}/>
+</head>
+
+<body>
+    <header>
+    <h1><a href="{{ url_for('index') }}"><img class ="logo" src={{ url_for('static', filename='imagenes/logo.png') }} alt="Logo"/></a>Inicio</h1>
+    </header>
+
+    <section class="sectionindex">
+    <div class="navdiv">
+        <nav class="cuadro">
+            <ul id="menu">
+            <li><a href="#" class="link_opciones">Iniciar sesión</a></li>
+            <li><a href="#" class="link_opciones">Carrito</a></li>
+            </ul>
+        </nav>
+
+        <nav class="cuadro">
+        <form action="{{ url_for('index') }}">
+            <ul>
+            <li id="Buscar_por">Buscar por:
+                <br><br>
+                <select>
+                <option value="titulo">Título</option>
+                <option value="director">Director</option>
+                <option value="genero">Género</option>
+                <option value="anio">Año</option>
+                </select><br><br>
+                <input required type="text" name="Busqueda" placeholder="Escribe aquí"><br><br>
+            </li>
+            </ul>
+            <button type="submit" class="busqueda">Buscar</button>
+        </form>
+        </nav>
+    </div>
+
+    {% block content%} {% endblock %}
+    </section>
+
+    <footer>
+    <p>David y Alain ®</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sesión - VideoClub</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Uso de url_for para obtener la ruta de elementos de la página -->
+  <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }}/>
+</head>
+
+<body>
+  <header>
+      <h1><a href="{{ url_for('index') }}"><img class ="logo" src={{ url_for('static', filename='imagenes/logo.png') }} alt="Logo"/></a>Sesión</h1>
+  </header>
+  <div class = "page-container">
+    <div class = "content-wrap">
+      <div class="login">
+        <form action="#">
+          <fieldset>
+          <legend>Iniciar sesión</legend>
+          Usuario:
+          <input required type="text" name="Busqueda" placeholder="Escribe aquí"><br><br>
+          Contraseña:
+          <input required type="password" name="Busqueda" placeholder="Escribe aquí"><br><br>
+            <input type="submit" class="busqueda" value="Iniciar sesión" />
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="register">
+        <form action="#">
+          <fieldset>
+            <legend>Registrarse</legend>
+            Usuario:
+            <input required type="text" name="Busqueda" placeholder="Escribe aquí"><br><br>
+            Contraseña:
+            <input required type="password" name="Busqueda" placeholder="Escribe aquí"><br><br>
+            Email:
+            <input required type="email" name="Busqueda" placeholder="email@example.com"><br><br>
+            Género:
+            <input type="radio" name="Genero" value="Masculino">Masculino
+            <input type="radio" name="Genero" value="Masculino">Femenino
+            <input type="radio" name="Genero" value="Masculino">Otro
+            <br><br>
+            Edad:
+            <input required type="number" min="16" max="99" name="Busqueda" ><br><br>
+            Tarjeta de credito:
+            <input required type="tel" name="Busqueda" maxlength="16" placeholder="0000111122223333" pattern="[0-9]{16}"><br><br>
+            <input type="submit" class="busqueda" value="Registrarse" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <footer class = "foot">
+      <p>David y Alain ®</p>
+    </footer>
+  </div>
+</body>
+
+</html>

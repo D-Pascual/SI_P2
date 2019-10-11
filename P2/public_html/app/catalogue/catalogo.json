@@ -3,52 +3,102 @@
       { 
         "id": 1,
         "titulo": "The Matrix",
-        "poster": "imagenes/foto1.jpg"
+        "poster": "imagenes/foto1.jpg",
+        "anio": 1999,
+        "director": "Hermanas Wachowski",
+        "genero": "Ciencia ficción. Fantástico. Acción. Thriller | Thriller futurista. Cyberpunk. Distopía. Internet / Informática. Artes marciales. Película de culto.",
+        "precio": 5,
+        "sinopsis": "Neo (Keanu Reeves) es un joven pirata informático que lleva una doble vida: durante el día ejerce en una empresa de servicios informáticos, mientras que por la noche se dedica a piratear bases de datos y saltarse sistemas de alta seguridad. Su vida cambiará cuando una noche conozca a Trinity (Carrie-Anne Moss), una misteriosa joven que parece ser una leyenda en el mundo de los 'hackers' informáticos. Será ella quien lleve a Neo ante su líder: Morfeo (Laurence Fishburne). Así descubrirá una terrible realidad y el joven deberá decidir si unirse a la resistencia o vivir su vida como hasta ahora. ¿Elegirá Neo la pastilla azul o la roja?"
       },
       { 
         "id": 2,
         "titulo": "The Godfather",
-        "poster": "imagenes/foto2.jpg"
+        "poster": "imagenes/foto2.jpg",
+        "anio": 1972,
+        "director": "Francis Ford Coppola",
+        "genero": "Drama | Mafia. Crimen. Años 40. Años 50. Familia. Película de culto.",
+        "precio": 6,
+        "sinopsis": "América, años 40. Don Vito Corleone (Marlon Brando) es el respetado y temido jefe de una de las cinco familias de la mafia de Nueva York. Tiene cuatro hijos: Connie (Talia Shire), el impulsivo Sonny (James Caan), el pusilánime Fredo (John Cazale) y Michael (Al Pacino), que no quiere saber nada de los negocios de su padre. Cuando Corleone, en contra de los consejos de 'Il consigliere' Tom Hagen (Robert Duvall), se niega a participar en el negocio de las drogas, el jefe de otra banda ordena su asesinato. Empieza entonces una violenta y cruenta guerra entre las familias mafiosas."
       },
       { 
         "id": 3,
         "titulo": "The Dark Knight",
-        "poster": "imagenes/foto3.jpg"
+        "poster": "imagenes/foto3.jpg",
+        "anio": 2008,
+        "director": "Christopher Nolan",
+        "genero": "Thriller. Acción. Drama | Superhéroes. Cómic. DC Comics. Secuela. Película de culto.",
+        "precio": 7,
+        "sinopsis": "Batman/Bruce Wayne (Christian Bale) regresa para continuar su guerra contra el crimen. Con la ayuda del teniente Jim Gordon (Gary Oldman) y del Fiscal del Distrito Harvey Dent (Aaron Eckhart), Batman se propone destruir el crimen organizado en la ciudad de Gotham. El triunvirato demuestra su eficacia, pero, de repente, aparece Joker (Heath Ledger), un nuevo criminal que desencadena el caos y tiene aterrados a los ciudadanos."
       },
       { 
         "id": 4,
         "titulo": "The Lord of the Rings",
-        "poster": "imagenes/foto4.jpg"
+        "poster": "imagenes/foto4.jpg",
+        "anio": 2001,
+        "director": "Peter Jackson",
+        "genero": "Fantástico. Aventuras. Acción | Fantasía medieval. Espada y brujería. Cine épico. Película de culto.",
+        "precio": 4,
+        "sinopsis": "En la Tierra Media, el Señor Oscuro Saurón ordenó a los Elfos que forjaran los Grandes Anillos de Poder. Tres para los reyes Elfos, siete para los Señores Enanos, y nueve para los Hombres Mortales. Pero Saurón también forjó, en secreto, el Anillo Único, que tiene el poder de esclavizar toda la Tierra Media. Con la ayuda de sus amigos y de valientes aliados, el joven hobbit Frodo emprende un peligroso viaje con la misión de destruir el Anillo Único. Pero el malvado Sauron ordena la persecución del grupo, compuesto por Frodo y sus leales amigos hobbits, un mago, un hombre, un elfo y un enano. La misión es casi suicida pero necesaria, pues si Sauron con su ejército de orcos lograra recuperar el Anillo, sería el final de la Tierra Media."
       },
       { 
         "id": 5,
         "titulo": "Pulp Fiction",
-        "poster": "imagenes/foto5.jpg"
+        "poster": "imagenes/foto5.jpg",
+        "anio": 1994,
+        "director": "Quentin Tarantino",
+        "genero": "Thriller | Crimen. Historias cruzadas. Película de culto",
+        "precio": 8,
+        "sinopsis": "Jules y Vincent, dos asesinos a sueldo con no demasiadas luces, trabajan para el gángster Marsellus Wallace. Vincent le confiesa a Jules que Marsellus le ha pedido que cuide de Mia, su atractiva mujer. Jules le recomienda prudencia porque es muy peligroso sobrepasarse con la novia del jefe. Cuando llega la hora de trabajar, ambos deben ponerse manos a la obra. Su misión: recuperar un misterioso maletín."
       },
       { 
         "id": 6,
         "titulo": "Forrest Gump",
-        "poster": "imagenes/foto6.jpg"
+        "poster": "imagenes/foto6.jpg",
+        "anio": 1994,
+        "director": "Robert Zemeckis",
+        "genero": "Comedia. Drama. Romance | Años 60. Años 70. Discapacidad. Comedia dramática. Película de culto.",
+        "precio": 6,
+        "sinopsis": "Forrest Gump (Tom Hanks) sufre desde pequeño un cierto retraso mental. A pesar de todo, gracias a su tenacidad y a su buen corazón será protagonista de acontecimientos cruciales de su país durante varias décadas. Mientras pasan por su vida multitud de cosas en su mente siempre está presente la bella Jenny (Robin Wright), su gran amor desde la infancia, que junto a su madre será la persona más importante en su vida."
       },
       { 
         "id": 7,
         "titulo": "Saving Private Ryan",
-        "poster": "imagenes/foto7.jpg"
+        "poster": "imagenes/foto7.jpg",
+        "anio": 1998,
+        "director": "Robert Rodat",
+        "genero": "Bélico | II Guerra Mundial",
+        "precio": 5,
+        "sinopsis": "Segunda Guerra Mundial (1939-1945). Tras el desembarco de los Aliados en Normandía, a un grupo de soldados americanos se le encomienda una peligrosa misión: poner a salvo al soldado James Ryan. Los hombres de la patrulla del capitán John Miller deben arriesgar sus vidas para encontrar a este soldado, cuyos tres hermanos han muerto en la guerra. Lo único que se sabe del soldado Ryan es que se lanzó con su escuadrón de paracaidistas detrás de las líneas enemigas."
       },
       { 
         "id": 8,
         "titulo": "Interstellar",
-        "poster": "imagenes/foto8.jpg"
+        "poster": "imagenes/foto8.jpg",
+        "anio": 1998,
+        "director": "Steven Spielberg",
+        "genero": "Bélico | II Guerra Mundial",
+        "precio": 3,
+        "sinopsis": "Al ver que la vida en la Tierra está llegando a su fin, un grupo de exploradores dirigidos por el piloto Cooper (McConaughey) y la científica Amelia (Hathaway) emprende una misión que puede ser la más importante de la historia de la humanidad: viajar más allá de nuestra galaxia para descubrir algún planeta en otra que pueda garantizar el futuro de la raza humana. "
       },
       { 
         "id": 9,
         "titulo": "The Pianist",
-        "poster": "imagenes/foto9.jpg"
+        "poster": "imagenes/foto9.jpg",
+        "anio": 2002,
+        "director": "Roman Polanski",
+        "genero": "Drama | II Guerra Mundial. Nazismo. Holocausto. Música. Biográfico. Histórico",
+        "precio": 5,
+        "sinopsis": "Wladyslaw Szpilman, un brillante pianista polaco de origen judío, vive con su familia en el ghetto de Varsovia. Cuando, en 1939, los alemanes invaden Polonia, consigue evitar la deportación gracias a la ayuda de algunos amigos. Pero tendrá que vivir escondido y completamente aislado durante mucho tiempo, y para sobrevivir tendrá que afrontar constantes peligros."
       },
       { 
         "id": 10,
         "titulo": "Avengers: Endgame",
-        "poster": "imagenes/foto10.jpg"
+        "poster": "imagenes/foto10.jpg",
+        "anio": 2019,
+        "director": "Anthony Russo, Joe Russo.",
+        "genero": "Ciencia ficción. Fantástico. Acción | Superhéroes. Viajes en el tiempo. Cómic. Marvel Comics. Secuela",
+        "precio": 9,
+        "sinopsis": "Después de los eventos devastadores de 'Avengers: Infinity War', el universo está en ruinas debido a las acciones de Thanos, el Titán Loco. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles son las consecuencias... Cuarta y última entrega de la saga Vengadores."
       }
     ]
   }

@@ -19,41 +19,46 @@
           <fieldset>
           <legend>Iniciar sesión</legend>
           Usuario:
-          <input required type="text" name="Busqueda" placeholder="Escribe aquí"><br><br>
+          <input required type="text" name="usuario" placeholder="Escribe aquí"><br><br>
           Contraseña:
-          <input required type="password" name="Busqueda" placeholder="Escribe aquí"><br><br>
+          <input required type="password" name="password" placeholder="Escribe aquí"><br><br>
             <input type="submit" class="busqueda" value="Iniciar sesión" />
           </fieldset>
         </form>
       </div>
 
       <div class="register">
-        <form action="#">
+        <form action="#" name="registro" method="post" method="post" onsubmit="return validarRegistro()">
           <fieldset>
             <legend>Registrarse</legend>
             Usuario:
-            <input required type="text" name="Busqueda" placeholder="Escribe aquí"><br><br>
+            <input required type="text" name="usuario" placeholder="Escribe aquí" pattern="[^()/><\][\\\x22,;|]+" title="No se puede dejar en blanco, ni usar estos carácteres prohibidos: ^()/><\\\\x22,;|"><br><br>
             Contraseña:
-            <input required type="password" name="Busqueda" placeholder="Escribe aquí"><br><br>
+            <input required type="password" name="password" placeholder="Escribe aquí" pattern=".{8,}" title="Mínimo 8 caracteres"><br><br>
+            Confirmación de contraseña:
+            <input required type="password" name="conf_password" placeholder="Escribe aquí"><br><br>
             Email:
-            <input required type="email" name="Busqueda" placeholder="email@example.com"><br><br>
+            <input required type="email" name="email" placeholder="email@example.com"><br><br>
             Género:
-            <input type="radio" name="Genero" value="Masculino">Masculino
-            <input type="radio" name="Genero" value="Masculino">Femenino
-            <input type="radio" name="Genero" value="Masculino">Otro
+            <input type="radio" name="Genero" value="masculino" checked="checked">Masculino
+            <input type="radio" name="Genero" value="femenino">Femenino
+            <input type="radio" name="Genero" value="otro">Otro
             <br><br>
             Edad:
-            <input required type="number" min="16" max="99" name="Busqueda" ><br><br>
+            <input required type="number" min="16" max="99" name="edad" ><br><br>
             Tarjeta de credito:
-            <input required type="tel" name="Busqueda" maxlength="16" placeholder="0000111122223333" pattern="[0-9]{16}"><br><br>
+            <input required type="tel" name="tarjeta" maxlength="16" placeholder="0000111122223333" pattern="[0-9]{16}"><br><br>
             <input type="submit" class="busqueda" value="Registrarse" />
           </fieldset>
         </form>
       </div>
     </div>
+
     <footer class = "foot">
       <p>David y Alain ®</p>
     </footer>
+
+    <script src={{ url_for('static', filename='js/validar.js') }}></script>
   </div>
 </body>
 

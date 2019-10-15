@@ -6,6 +6,9 @@ from flask import render_template, request, url_for, redirect, session
 import json
 import os
 import sys
+import hashlib
+from random import randrange
+
 
 @app.route('/')
 @app.route('/index')
@@ -24,3 +27,22 @@ def detalle(titulo):
 @app.route('/sesion')
 def sesion():
     return render_template('sesion.html', title = "Sesion")
+
+@app.route('/registrar', methods=['GET', 'POST'] )
+def registrar():   
+    if request.method == "POST":
+        usuario = { "username" : request.form['usuario'],
+                    "password" :  hashlib.md5(request.form['password'].encode('utf-8')).hexdigest(),
+                    "email" : request.form['email'],
+                    "genero" : request.form['genero'],
+                    "edad" : request.form['edad'],
+                    "tarjeta" : request.form['tarjeta'], 
+                    "saldo" :  randrange(101)}
+
+        os.makedirs(os.path.join(app.root_path, 'usuarios/', request.form['usuario'], '/'),exist_ok=True)
+
+        data_file = open(os.path.join(app.root_path, 'usuarios/', request.form['usuario'], '/datos.dat'),"w")
+        data_file.write(usuario)
+        data_file.close()
+
+    return redirect(url_for('index'))

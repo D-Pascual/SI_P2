@@ -12,10 +12,21 @@
   <header>
       <h1><a href="{{ url_for('index') }}"><img class ="logo" src={{ url_for('static', filename='imagenes/logo.png') }} alt="Logo"/></a>Sesión</h1>
   </header>
+
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          <ul>
+          {% for message in messages %}
+              <li class=flashes>{{ message }}</li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+  {% endwith %}
+
   <div class = "page-container">
     <div class = "content-wrap">
       <div class="login">
-        <form action="#">
+        <form action="{{ url_for('login') }}" name="login" method="post">
           <fieldset>
           <legend>Iniciar sesión</legend>
           Usuario:
@@ -28,7 +39,7 @@
       </div>
 
       <div class="register">
-        <form action="{{ url_for('registrar') }}" name="registro" method="post" method="post" onsubmit="return validarRegistro()">
+        <form action="{{ url_for('registrar') }}" name="registro" method="post" onsubmit="return validarRegistro()">
           <fieldset>
             <legend>Registrarse</legend>
             Usuario:

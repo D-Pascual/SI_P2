@@ -17,8 +17,8 @@
     <div class="navdiv">
         <nav class="cuadro">
             <ul id="menu">
-            <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>
-            <li><a href="#" class="link_opciones">Carrito</a></li>
+                <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>
+                <li><a href="#" class="link_opciones">Carrito</a></li>
             </ul>
         </nav>
 
@@ -41,6 +41,16 @@
         </nav>
     </div>
 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li class=flashes>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
     {% block content%} {% endblock %}
     </section>
 

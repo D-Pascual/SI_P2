@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ selection["titulo"] }}
+{% endblock%}
+
+{% block head %}
+    {{ selection["titulo"] }}
+{% endblock %}
+
+{% block content %}
+    <article class="detalle_col">
+        <br><div class = "foto"><img src="{{url_for('static', filename=selection['poster'])}}" alt="Caratula"> <br> <p id="titulo_detalle"><strong>{{ selection["titulo"] }}</strong><p> </div>
+        <div>
+            <strong>Sinopsis</strong><br><br>
+            {{ selection["sinopsis"] }}
+            <br><br>
+            Año: {{ selection["anio"] }}<br>
+            Director/es: {{ selection["director"] }}<br>
+            Género/s: {{ selection["genero"] }}<br><br>
+            Precio: {{ selection["precio"] }}€<br><br>
+
+            <input type="submit" value="Añadir al carrito" />        
+        </div>
+    </article>
+{% endblock %}
+

@@ -19,7 +19,13 @@
         <div class="navdiv">
             <nav class="cuadro1">
                 <ul id="menu">
-                    <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>
+                    {% if usuario in session %}
+                        <li><a href="#" class="link_opciones">Usuario: {{ session['username'] }}</a></li>
+                        <li><a href="{{ url_for('logout', user) }}" class="link_opciones">Cerrar sesión</a></li>
+                        <li><a href="#" class="link_opciones">Historial de pedidos</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>
+                    {% endif %}
                     <li><a href="#" class="link_opciones">Carrito</a></li>
                 </ul>
             </nav>
@@ -58,7 +64,9 @@
             <li class=flashes>{{ message }}</li>
             {% endfor %}
         </ul>
-        {% endif %} {% endwith %} {% block content%} {% endblock %}
+        {% endif %} {% endwith %} 
+        
+        {% block content%} {% endblock %}
     </section>
 
     <footer>

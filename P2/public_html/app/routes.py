@@ -89,8 +89,24 @@ def login():
             flash('¡Contraseña errónea!')
             return redirect(url_for('sesion')) 
 
-    catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
-    catalogue = json.loads(catalogue_data)
-    return render_template('index.html', title = "Home", movies=catalogue['peliculas'])
+        session['username'] = request.form['usuario']
+
+        catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
+        catalogue = json.loads(catalogue_data)
+        return render_template('index.html', title = "Home", usuario=usuario, session = session, movies=catalogue['peliculas'])
+    else:
+        return redirect(url_for('sesion')) 
+
+@app.route('/logout/<user>')
+def logout(user):   
+    if 'user' in session:
+        session.pop('username', None)
+    else:
+        flash('Hubo un error al cerrar sesión')
+
+    return redirect(url_for('sesion'))
+
+     
+
 
 

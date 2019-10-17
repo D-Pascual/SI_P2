@@ -220,9 +220,10 @@ tr:nth-child(even) {
 }
 
 .flashes {
-  color: red
+  color: red;
   text-align: center;
   font-size: large;
+  list-style-type: none;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */

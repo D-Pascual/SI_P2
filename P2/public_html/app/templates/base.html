@@ -19,9 +19,9 @@
         <div class="navdiv">
             <nav class="cuadro1">
                 <ul id="menu">
-                    {% if usuario in session %}
-                        <li><a href="#" class="link_opciones">Usuario: {{ session['username'] }}</a></li>
-                        <li><a href="{{ url_for('logout', user) }}" class="link_opciones">Cerrar sesión</a></li>
+                    {% if 'logged_in' in session: %}
+                        <li><a href="#" class="link_opciones">Usuario: {{ session['usuario'] }}</a></li>
+                        <li><a href="{{ url_for('logout', user=session['usuario']) }}" class="link_opciones">Cerrar sesión</a></li>
                         <li><a href="#" class="link_opciones">Historial de pedidos</a></li>
                     {% else %}
                         <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>

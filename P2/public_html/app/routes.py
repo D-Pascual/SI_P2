@@ -17,15 +17,18 @@ import ast
 def index():
     catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
     catalogue = json.loads(catalogue_data)
+
     if request.method == 'POST':
         if 'Busqueda' in request.form:
             pelicula = request.form['Busqueda']
-            return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'si')
+            return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'si', session=session)
         else:
             pelicula = request.form['Filtrado']
             if (pelicula != 'Filtrar por'):
-                return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'filtro')
-    return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no')
+                return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'filtro', session=session)
+
+    return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session)
+
 
 @app.route('/<titulo>')
 def detalle(titulo):
@@ -89,22 +92,24 @@ def login():
             flash('¡Contraseña errónea!')
             return redirect(url_for('sesion')) 
 
-        session['username'] = request.form['usuario']
-
-        catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
-        catalogue = json.loads(catalogue_data)
-        return render_template('index.html', title = "Home", usuario=usuario, session = session, movies=catalogue['peliculas'])
+        session['logged_in'] = True
+        session['usuario'] = request.form['usuario']
+        session.modified=True
+        return redirect(url_for('index')) 
     else:
+        flash('Error en el login, pruebe otra vez.')
         return redirect(url_for('sesion')) 
 
 @app.route('/logout/<user>')
 def logout(user):   
-    if 'user' in session:
-        session.pop('username', None)
+    if 'logged_in' in session:
+        session.pop('usuario', None)
+        session.pop('logged_in', None)
+        session.modified=True
     else:
         flash('Hubo un error al cerrar sesión')
 
-    return redirect(url_for('sesion'))
+    return redirect(url_for('index'))
 
      
 

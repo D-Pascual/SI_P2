@@ -23,12 +23,20 @@ header h1 {
   text-shadow: 3px 2px rgb(7, 0, 5);
 }
 
-.cuadro {
+.cuadro1 {
   border-style: ridge;
   width: 100%;
   background: #ccc;
   padding: 10px;
-  height: 220px;
+  height: 250px;
+  padding-right: 25px;
+}
+.cuadro2 {
+  border-style: ridge;
+  width: 100%;
+  background: #ccc;
+  padding: 10px;
+  height: 280px;
   padding-right: 25px;
 }
 #Buscar_por {

@@ -17,14 +17,14 @@
 
     <section class="sectionindex">
         <div class="navdiv">
-            <nav class="cuadro">
+            <nav class="cuadro1">
                 <ul id="menu">
                     <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>
                     <li><a href="#" class="link_opciones">Carrito</a></li>
                 </ul>
             </nav>
 
-            <nav class="cuadro">
+            <nav class="cuadro2">
                 <form action="{{ url_for('index') }}" method="POST">
                     <ul>
                         <li id="Buscar_por">Filtrar:
@@ -39,9 +39,7 @@
                         </li>
                     </ul>
                     <button type="submit" class="busqueda">Buscar</button>
-                </form>
-            </nav>
-            <nav class="cuadro">
+                </form><br>
                 <form action="{{ url_for('index') }}" method="POST">
                     <ul>
                         <li id="Buscar_por">Buscar por:

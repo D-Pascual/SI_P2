@@ -12,13 +12,20 @@ from flask import flash
 import ast
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['POST', 'GET', 'PUT'])
+@app.route('/index', methods=['POST', 'GET', 'PUT'])
 def index():
     catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
     catalogue = json.loads(catalogue_data)
-    return render_template('index.html', title = "Home", movies=catalogue['peliculas'])
-
+    if request.method == 'POST':
+        if 'Busqueda' in request.form:
+            pelicula = request.form['Busqueda']
+            return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'si')
+        else:
+            pelicula = request.form['Filtrado']
+            if (pelicula != 'Filtrar por'):
+                return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'filtro')
+    return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no')
 
 @app.route('/<titulo>')
 def detalle(titulo):

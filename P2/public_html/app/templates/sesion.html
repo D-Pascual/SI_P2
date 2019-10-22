@@ -30,7 +30,12 @@
           <fieldset>
           <legend>Iniciar sesión</legend>
           Usuario:
-          <input required type="text" name="usuario" placeholder="Escribe aquí" value="{{ last_user }}"><br><br>
+          {% if last_user %}
+            <input required type="text" name="usuario" placeholder="Escribe aquí" value="{{ last_user }}"><br><br> 
+          {% else %}
+            <input required type="text" name="usuario" placeholder="Escribe aquí"><br><br>         
+          {% endif %}
+          
           Contraseña:
           <input required type="password" name="password" placeholder="Escribe aquí"><br><br>
             <input type="submit" class="busqueda" value="Iniciar sesión" />

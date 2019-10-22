@@ -27,11 +27,6 @@ def index():
             if (pelicula != 'Filtrar por'):
                 return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'filtro', session=session)
 
-    # return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session)
-
-    last_user = request.cookies.get('username')
-    if last_user:
-        return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session, last_user=last_user)    
     return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session)
 
 

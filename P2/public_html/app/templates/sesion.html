@@ -30,7 +30,7 @@
           <fieldset>
           <legend>Iniciar sesión</legend>
           Usuario:
-          <input required type="text" name="usuario" placeholder="Escribe aquí"><br><br>
+          <input required type="text" name="usuario" placeholder="Escribe aquí" value="{{ last_user }}"><br><br>
           Contraseña:
           <input required type="password" name="password" placeholder="Escribe aquí"><br><br>
             <input type="submit" class="busqueda" value="Iniciar sesión" />
@@ -43,7 +43,8 @@
           <fieldset>
             <legend>Registrarse</legend>
             Usuario:
-            <input required type="text" name="usuario" placeholder="Escribe aquí" pattern="[^()/><\][\\\x22,;|]+" title="No se puede dejar en blanco, ni usar estos carácteres prohibidos: ^()/><\\\\x22,;|"><br><br>
+            <input required type="text" name="usuario" placeholder="Escribe aquí" pattern="[^()/><\][\\\x22,;|]+" 
+              title="No se puede dejar en blanco, ni usar estos carácteres prohibidos: ^()/><\\\\x22,;|"><br><br>
             Contraseña:
             <input required type="password" name="password" placeholder="Escribe aquí" pattern=".{8,}" title="Mínimo 8 caracteres"><br><br>
             Confirmación de contraseña:

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from app import app
-from flask import render_template, request, url_for, redirect, session
+from flask import render_template, request, url_for, redirect, session, make_response
 import json
 import os
 import sys
@@ -27,6 +27,11 @@ def index():
             if (pelicula != 'Filtrar por'):
                 return render_template('index.html', title = "Home", movies=catalogue['peliculas'], pelicula=pelicula, busqueda = 'filtro', session=session)
 
+    # return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session)
+
+    last_user = request.cookies.get('username')
+    if last_user:
+        return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session, last_user=last_user)    
     return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session)
 
 
@@ -40,6 +45,9 @@ def detalle(titulo):
 
 @app.route('/sesion')
 def sesion():
+    last_user = request.cookies.get('username')
+    if last_user:
+        return render_template('sesion.html', title = "Sesion", last_user=last_user)
     return render_template('sesion.html', title = "Sesion")
 
 
@@ -95,7 +103,12 @@ def login():
         session['logged_in'] = True
         session['usuario'] = request.form['usuario']
         session.modified=True
-        return redirect(url_for('index')) 
+
+        resp = make_response(redirect(url_for('index')))
+        resp.set_cookie('username', usuario)
+        return resp
+
+        # return redirect(url_for('index')) 
     else:
         flash('Error en el login, pruebe otra vez.')
         return redirect(url_for('sesion')) 

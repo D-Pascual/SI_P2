@@ -14,7 +14,13 @@
         <h1>
             <a href="{{ url_for('index') }}"><img class="logo" src={{ url_for( 'static', filename='imagenes/logo.png' ) }} alt="Logo" /></a>{% block head %}{% endblock %}</h1>
     </header>
-
+        {% with messages = get_flashed_messages() %} {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li class=flashes>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %} {% endwith %} 
     <section class="sectionindex">
         <div class="navdiv">
             <nav class="cuadro1">
@@ -26,7 +32,7 @@
                     {% else %}
                         <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>
                     {% endif %}
-                    <li><a href="#" class="link_opciones">Carrito</a></li>
+                    <li><a href="{{ url_for('carrito') }}" class="link_opciones">Carrito</a></li>
                 </ul>
             </nav>
 
@@ -57,14 +63,6 @@
                 </form>
             </nav>
         </div>
-
-        {% with messages = get_flashed_messages() %} {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li class=flashes>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %} {% endwith %} 
         
         {% block content%} {% endblock %}
     </section>

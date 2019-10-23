@@ -29,7 +29,6 @@ def index():
 
     return render_template('index.html', title = "Home", movies=catalogue['peliculas'], busqueda='no', session=session)
 
-
 @app.route('/<titulo>')
 def detalle(titulo):
     catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
@@ -112,6 +111,7 @@ def login():
 def logout(user):   
     if 'logged_in' in session:
         session.pop('usuario', None)
+        session.pop('cart', None)
         session.pop('logged_in', None)
         session.modified=True
     else:
@@ -119,7 +119,52 @@ def logout(user):
 
     return redirect(url_for('index'))
 
+@app.route("/carrito")
+def carrito():
+    catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
+    catalogue = json.loads(catalogue_data)
+    
+    ids_in_cart = session.get('cart',[])
+    movies = []
+    precio = 0
+    
+    for x in catalogue['peliculas']:
+        if x['id'] in ids_in_cart:
+            movies.append(x)
+            precio += x['precio']
+            
+
+
+    return render_template("carrito.html", movies=movies, precio=precio)
+
+
+@app.route("/add_to_cart/<id>")
+def add_to_cart(id):
+    if 'cart' not in session:
+        session['cart'] = []
+
+    session['cart'].append(int(id))
+
+    flash('Elemento añadido al carrito')
+    
+    catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
+    catalogue = json.loads(catalogue_data)
+    for x in catalogue['peliculas']:
+        if x['id'] == int(id):
+            return redirect("/" + x['titulo'])
+    
+    return redirect("/carrito")
      
+@app.route('/borrarCarrito')
+def borrarCarrito():   
+    session.pop('cart', None)
+    session.modified=True
 
+    return redirect(url_for('carrito'))
 
+@app.route('/borrarElemento/<id>')
+def borrarElemento(id):   
+    session['cart'].remove(int(id))
+    session.modified=True
 
+    return redirect(url_for('carrito'))

@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %} {{ title }} {% endblock%} {% block head %} Carrito {% endblock %} {% block content %}
+<nav class="article">
+    <nav class="carrito">
+        <table>
+            <tr>
+            <th>ID película</th>
+            <th>Artículo</th>
+            <th>Precio</th>
+            <th>Compra</th>
+            <th>Borrar</th>
+                    </tr>
+            {% for item in movies %}
+                    <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.titulo }}</td>
+                    <td>{{ item.precio }}€</td>
+                    <td><input type="submit" value="Comprar este elemento" /> </td>
+                    <td><form action="{{ url_for('borrarElemento', id=item.id) }}">
+                    <input type="submit" value="Borrar este elemento" />
+                    </form></td>
+                    </tr>
+            {% endfor %}
+        </table>    
+    </nav>
+    <nav class="botones">
+    <h3>Total: </h3>
+    <h2>{{ precio }}€</h2><br>
+    <input type="submit" value="Comprar todos"/><br><br>
+    <form action="{{ url_for('borrarCarrito') }}">
+    <input type="submit" value="Limpiar la cesta" />
+    </form>
+    </nav>
+
+</nav> 
+{% endblock %}

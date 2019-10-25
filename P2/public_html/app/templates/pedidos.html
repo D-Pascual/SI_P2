@@ -1,0 +1,83 @@
+{% extends "base.html" %} {% block title %} {{ title }} {% endblock%} {% block head %} 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+	jQuery.fn.animateAuto = function(prop, speed, callback){
+    var elem, height, width;
+    return this.each(function(i, el){
+        el = jQuery(el), elem = el.clone().css({"height":"auto","width":"auto"}).appendTo("body");
+        height = elem.css("height"),
+        width = elem.css("width"),
+        elem.remove();
+        
+        if(prop === "height")
+            el.animate({"height":height}, speed, callback);
+        else if(prop === "width")
+            el.animate({"width":width}, speed, callback);  
+        else if(prop === "both")
+            el.animate({"width":width,"height":height}, speed, callback);
+    });  
+	}
+	$(window).ready(function(){
+		$('.plegablePedido').click(function(){
+			if($(this).next().hasClass('desplegado')){
+				$(this).next().removeClass('desplegado').animate({height:0},700);
+			}else{
+				$(this).next().addClass('desplegado').animateAuto("height",700);
+			}
+		})
+	})
+</script>
+Pedidos 
+{% endblock %} {% block content %}
+<nav class="article">
+    <nav class="pedidos">
+        <table >
+            {% if datosHistorial %}
+                {% for item in datosHistorial %}
+                    <tr class="trPedidos">
+                    <td class="tabla_pedidos"><h3 class="plegablePedido">Pedido {{ item.id+1 }}</h3>                    
+                    <div class="plegable">
+
+                    <table >
+                        <tr>
+                        <th class="tabla_pedidos">Fecha</th>
+                        <th class="tabla_pedidos">Precio</th>
+                        </tr>
+                        <tr>
+                        <td class="tabla_pedidos">{{ item.fecha }}</td>
+                        <td class="tabla_pedidos">{{ item.precio }}€</td>
+                        </tr>
+                    </table>  
+
+                    <table >
+                        <tr>
+                        <th class="tabla_pedidos">Articulos</th>
+                        </tr>
+                    </table> 
+                    <table > 
+                        <tr>
+                        <th class="tabla_pedidos">ID pelicula</th>
+                        <th class="tabla_pedidos">Titulo</th>
+                        <th class="tabla_pedidos">Precio</th>
+                        </tr>
+                        {% for x in movies %}
+                            {% if x['id'] in item['peliculas'] %}
+                                <tr><td class="tabla_pedidos">{{ x.id }}</td>
+                                <td class="tabla_pedidos">{{ x.titulo }}</td>
+                                <td class="tabla_pedidos">{{ x.precio }}€</td></tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>    
+                    </div></td>
+                    </tr>
+                {% endfor %}
+             {% else %}
+                    <tr>
+                    <th class="tabla_pedidos">No hay pedidos recientes</td>
+                    </tr>
+            {% endif %}
+        </table>    
+    </nav>
+
+</nav> 
+{% endblock %}

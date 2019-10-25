@@ -25,7 +25,9 @@
     <nav class="botones">
     <h3>Total: </h3>
     <h2>{{ precio }}€</h2><br>
-    <input type="submit" value="Comprar todos"/><br><br>
+    <form action="{{ url_for('comprarCarrito') }}">
+    <input type="submit" value="Comprar carrito" />
+    </form><br>
     <form action="{{ url_for('borrarCarrito') }}">
     <input type="submit" value="Limpiar la cesta" />
     </form>

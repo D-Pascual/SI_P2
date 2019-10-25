@@ -10,6 +10,8 @@ import hashlib
 from random import randrange
 from flask import flash
 import ast
+from datetime import date
+
 
 
 @app.route('/', methods=['POST', 'GET', 'PUT'])
@@ -54,7 +56,8 @@ def registrar():
                     "genero" : request.form['genero'],
                     "edad" : request.form['edad'],
                     "tarjeta" : request.form['tarjeta'], 
-                    "saldo" :  randrange(101)}
+                    "saldo" :  randrange(101),
+                    "nPedidos": 0}
 
         directorio = os.path.join(app.root_path, 'usuarios', request.form['usuario'])
         try:
@@ -70,6 +73,9 @@ def registrar():
 
         directorio = os.path.join(app.root_path, 'usuarios', request.form['usuario'], 'historial.json')
         historial = open(directorio,"w")
+        json.dump({
+            "historial": []
+        }, historial)
         historial.close()
 
     return redirect(url_for('index'))
@@ -96,6 +102,7 @@ def login():
 
         session['logged_in'] = True
         session['usuario'] = request.form['usuario']
+        session["saldo"] = data_dictionary["saldo"]
         session.modified=True
 
         resp = make_response(redirect(url_for('index')))
@@ -111,7 +118,6 @@ def login():
 def logout(user):   
     if 'logged_in' in session:
         session.pop('usuario', None)
-        session.pop('cart', None)
         session.pop('logged_in', None)
         session.modified=True
     else:
@@ -132,10 +138,23 @@ def carrito():
         if x['id'] in ids_in_cart:
             movies.append(x)
             precio += x['precio']
-            
-
-
+    session['total'] = precio;
+    session.modified=True
+    
     return render_template("carrito.html", movies=movies, precio=precio)
+
+@app.route("/pedidos")
+def pedidos():
+    catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
+    catalogue = json.loads(catalogue_data)
+    
+    if 'logged_in' in session:
+        historial_dir = open(os.path.join(app.root_path, 'usuarios', session['usuario'], 'historial.json'), encoding="utf-8").read()
+        historial = json.loads(historial_dir)
+        datosHistorial = historial['historial']
+        
+        return render_template("pedidos.html", datosHistorial=datosHistorial, movies=catalogue['peliculas'])
+    redirect(url_for('carrito'))
 
 
 @app.route("/add_to_cart/<id>")
@@ -153,7 +172,7 @@ def add_to_cart(id):
         if x['id'] == int(id):
             return redirect("/" + x['titulo'])
     
-    return redirect("/carrito")
+    return redirect(url_for('carrito'))
      
 @app.route('/borrarCarrito')
 def borrarCarrito():   
@@ -168,3 +187,61 @@ def borrarElemento(id):
     session.modified=True
 
     return redirect(url_for('carrito'))
+
+@app.route('/comprarCarrito')
+def comprarCarrito():   
+    if 'logged_in' in session:
+        directorio = os.path.join(app.root_path, 'usuarios', session['usuario'], 'datos.dat')
+        try:
+            with open(directorio, "r") as data_file:
+                data_dictionary = ast.literal_eval(data_file.read())
+        except IOError:
+            flash('¡El usuario no existe!')
+        saldo = data_dictionary.get('saldo')
+        if saldo >= session['total']:
+            catalogue_data = open(os.path.join(app.root_path,'catalogue/catalogo.json'), encoding="utf-8").read()
+            catalogue = json.loads(catalogue_data)
+            
+            ids_in_cart = session.get('cart',[])
+            
+            historial_data = open(os.path.join(app.root_path, 'usuarios', session['usuario'], 'historial.json'), encoding="utf-8").read()
+            historial = json.loads(historial_data)
+            datosHistorial = historial['historial']
+            id = data_dictionary.get('nPedidos');
+            data = {
+                    "id": id,
+                    "fecha": str(date.today()),
+                    "precio": session['total'],
+                    "peliculas": ids_in_cart
+            }
+            datosHistorial.append(data);
+
+            directorioHistorial = os.path.join(app.root_path, 'usuarios', session['usuario'], 'historial.json')
+            file = open(directorioHistorial,"w")
+            json.dump({
+                "historial": datosHistorial}, file)
+            file.close()
+            session.pop('cart', None)
+            session.modified=True
+            data_dictionary["saldo"] -= session['total']
+            data_dictionary["nPedidos"] += 1
+            
+            directorio_datos = os.path.join(app.root_path, 'usuarios', session['usuario'], 'datos.dat')
+            datos_file = open(directorio_datos,"w")
+            datos_file.write(str(data_dictionary))
+            datos_file.close()
+            session["saldo"] = data_dictionary["saldo"]
+            return redirect(url_for('carrito'))
+        else:
+            flash('No tienes suficiente saldo')
+            return redirect(url_for('carrito'))
+    else:
+        return redirect(url_for('sesion'))
+
+# @app.route('/comprarElemento/<id>')
+# def comprarElemento(id):   
+#     session['cart'].remove(int(id))
+#     session.modified=True
+
+#     return redirect(url_for('carrito'))
+

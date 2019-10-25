@@ -224,9 +224,26 @@ table {
     width: 80%;
 }
 
+.pedidos {
+    width: 100%;
+}
+
+.tabla_pedidos {
+    text-align: center;
+}
+
 .botones {
     width: 20%;
     padding: 10px;
+}
+
+.plegable {
+    height: 0;
+    overflow: hidden;
+}
+
+.plegablePedido {
+    cursor: pointer;
 }
 
 td,
@@ -238,6 +255,10 @@ th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
+}
+
+.trPedidos:nth-child(even) {
+    background: #ffffff;
 }
 
 .foot {
@@ -260,7 +281,8 @@ tr:nth-child(even) {
 
 @media (max-width: 600px) {
     nav,
-    article {
+    article,
+    .carrito {
         width: 100%;
         height: auto;
     }

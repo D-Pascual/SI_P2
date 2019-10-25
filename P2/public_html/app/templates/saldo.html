@@ -9,14 +9,14 @@
 {% endblock %}
 
 {% block content %}
-    <div>
+    <div id="saldo">
         <h2> Su saldo actual es de: {{ session['saldo'] }}€ </h5><br>
         <form action="{{ url_for('aumentarSaldo') }}" method="post">
             <fieldset>
                 <legend>Aumentar saldo de su cuenta:</legend>
                 Incrementar en (€):
                 <input required type="number" name="cantidad" min="1" max="999"><br><br>
-                <input type="submit" value="Incrementar">
+                <input type="submit" value="Ingresar" class="busqueda">
             </fieldset>
         </form>
     </div>

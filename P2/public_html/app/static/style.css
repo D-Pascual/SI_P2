@@ -276,6 +276,15 @@ tr:nth-child(even) {
     list-style-type: none;
 }
 
+#saldo {
+    padding: 20px;
+    height: 400px;
+    width: 600px;
+    position: absolute;
+    left: 300px;
+    background-color: #C1C1C1;
+    border-style: double;
+}
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 

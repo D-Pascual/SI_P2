@@ -25,7 +25,7 @@
             "poster": "imagenes/foto3.jpg",
             "anio": 2008,
             "director": "Christopher Nolan",
-            "genero": "Superhéroes",
+            "genero": "Ciencia Ficción",
             "precio": 7,
             "sinopsis": "Batman/Bruce Wayne (Christian Bale) regresa para continuar su guerra contra el crimen. Con la ayuda del teniente Jim Gordon (Gary Oldman) y del Fiscal del Distrito Harvey Dent (Aaron Eckhart), Batman se propone destruir el crimen organizado en la ciudad de Gotham. El triunvirato demuestra su eficacia, pero, de repente, aparece Joker (Heath Ledger), un nuevo criminal que desencadena el caos y tiene aterrados a los ciudadanos."
         },
@@ -35,7 +35,7 @@
             "poster": "imagenes/foto4.jpg",
             "anio": 2001,
             "director": "Peter Jackson",
-            "genero": "Aventuras",
+            "genero": "Ciencia Ficción",
             "precio": 4,
             "sinopsis": "En la Tierra Media, el Señor Oscuro Saurón ordenó a los Elfos que forjaran los Grandes Anillos de Poder. Tres para los reyes Elfos, siete para los Señores Enanos, y nueve para los Hombres Mortales. Pero Saurón también forjó, en secreto, el Anillo Único, que tiene el poder de esclavizar toda la Tierra Media. Con la ayuda de sus amigos y de valientes aliados, el joven hobbit Frodo emprende un peligroso viaje con la misión de destruir el Anillo Único. Pero el malvado Sauron ordena la persecución del grupo, compuesto por Frodo y sus leales amigos hobbits, un mago, un hombre, un elfo y un enano. La misión es casi suicida pero necesaria, pues si Sauron con su ejército de orcos lograra recuperar el Anillo, sería el final de la Tierra Media."
         },
@@ -45,7 +45,7 @@
             "poster": "imagenes/foto5.jpg",
             "anio": 1994,
             "director": "Quentin Tarantino",
-            "genero": "Thriller",
+            "genero": "Comedia",
             "precio": 8,
             "sinopsis": "Jules y Vincent, dos asesinos a sueldo con no demasiadas luces, trabajan para el gángster Marsellus Wallace. Vincent le confiesa a Jules que Marsellus le ha pedido que cuide de Mia, su atractiva mujer. Jules le recomienda prudencia porque es muy peligroso sobrepasarse con la novia del jefe. Cuando llega la hora de trabajar, ambos deben ponerse manos a la obra. Su misión: recuperar un misterioso maletín."
         },
@@ -65,7 +65,7 @@
             "poster": "imagenes/foto7.jpg",
             "anio": 1998,
             "director": "Robert Rodat",
-            "genero": "Bélico",
+            "genero": "Thriller",
             "precio": 5,
             "sinopsis": "Segunda Guerra Mundial (1939-1945). Tras el desembarco de los Aliados en Normandía, a un grupo de soldados americanos se le encomienda una peligrosa misión: poner a salvo al soldado James Ryan. Los hombres de la patrulla del capitán John Miller deben arriesgar sus vidas para encontrar a este soldado, cuyos tres hermanos han muerto en la guerra. Lo único que se sabe del soldado Ryan es que se lanzó con su escuadrón de paracaidistas detrás de las líneas enemigas."
         },
@@ -95,7 +95,7 @@
             "poster": "imagenes/foto10.jpg",
             "anio": 2019,
             "director": "Anthony Russo, Joe Russo.",
-            "genero": "Superhéroes",
+            "genero": "Ciencia Ficción",
             "precio": 9,
             "sinopsis": "Después de los eventos devastadores de 'Avengers: Infinity War', el universo está en ruinas debido a las acciones de Thanos, el Titán Loco. Con la ayuda de los aliados que quedaron, los Vengadores deberán reunirse una vez más para intentar deshacer sus acciones y restaurar el orden en el universo de una vez por todas, sin importar cuáles son las consecuencias... Cuarta y última entrega de la saga Vengadores."
         }

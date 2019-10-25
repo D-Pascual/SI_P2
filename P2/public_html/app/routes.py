@@ -108,8 +108,6 @@ def login():
         resp = make_response(redirect(url_for('index')))
         resp.set_cookie('username', usuario)
         return resp
-
-        # return redirect(url_for('index')) 
     else:
         flash('Error en el login, pruebe otra vez.')
         return redirect(url_for('sesion')) 
@@ -231,11 +229,14 @@ def comprarCarrito():
             datos_file.write(str(data_dictionary))
             datos_file.close()
             session["saldo"] = data_dictionary["saldo"]
+
+            flash('¡Carrito comprado!')
             return redirect(url_for('carrito'))
         else:
             flash('No tienes suficiente saldo')
             return redirect(url_for('carrito'))
     else:
+        flash('¡Para comprar debes estar logueado!')
         return redirect(url_for('sesion'))
 
 # @app.route('/comprarElemento/<id>')
@@ -244,4 +245,40 @@ def comprarCarrito():
 #     session.modified=True
 
 #     return redirect(url_for('carrito'))
+
+
+@app.route('/saldo')
+def saldo():   
+    return render_template("saldo.html", title="Saldo", session=session)
+
+
+@app.route('/aumentarSaldo', methods=['GET', 'POST'])
+def aumentarSaldo():   
+    if request.method == "POST":
+        aumento = int(request.form['cantidad'])
+
+        directorio = os.path.join(app.root_path, 'usuarios', session['usuario'], 'datos.dat')
+        try:
+            with open(directorio, "r+") as data_file:
+                data_dictionary = ast.literal_eval(data_file.read())
+                saldo = data_dictionary.get('saldo')
+                saldo += aumento
+                data_dictionary['saldo'] = saldo
+                data_file.seek(0)
+                data_file.write(str(data_dictionary))
+                data_file.truncate()
+        except IOError:
+            flash('¡El usuario no existe!')
+            return redirect(url_for('saldo')) 
+
+        session["saldo"] += aumento
+        session.modified=True
+        flash('¡Saldo aumentado!')
+        return redirect(url_for('index')) 
+    else:
+        flash('Error al incrementar saldo, pruebe otra vez.')
+        return redirect(url_for('saldo'))
+
+        
+
 

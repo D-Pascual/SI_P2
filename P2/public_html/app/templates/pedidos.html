@@ -22,7 +22,7 @@ Pedidos
                     <table >
                         <tr>
                         <th class="tabla_pedidos">Fecha</th>
-                        <th class="tabla_pedidos">Precio</th>
+                        <th class="tabla_pedidos">Total</th>
                         </tr>
                         <tr>
                         <td class="tabla_pedidos">{{ item.fecha }}</td>
@@ -39,7 +39,7 @@ Pedidos
                         <tr>
                         <th class="tabla_pedidos">ID pelicula</th>
                         <th class="tabla_pedidos">Titulo</th>
-                        <th class="tabla_pedidos">Precio</th>
+                        <th class="tabla_pedidos">Precio (ud)</th>
                         </tr>
                         {% for x in movies %}
                             {% if x['id'] in item['peliculas'] %}

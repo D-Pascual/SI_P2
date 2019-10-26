@@ -180,16 +180,18 @@ def add_to_cart(id):
     if 'cart' not in session:
         session['cart'] = []
 
+    catalogue_data = open(os.path.join(
+        app.root_path, 'catalogue/catalogo.json'), encoding="utf-8").read()
+    catalogue = json.loads(catalogue_data)
+    if int(id) in session['cart']:
+        flash('Este artículo ya está en el carrito')
+        for x in catalogue['peliculas']:
+            if x['id'] == int(id):
+                return redirect("/" + x['titulo'])
     session['cart'].append(int(id))
 
     flash('Elemento añadido al carrito')
 
-    catalogue_data = open(os.path.join(
-        app.root_path, 'catalogue/catalogo.json'), encoding="utf-8").read()
-    catalogue = json.loads(catalogue_data)
-    for x in catalogue['peliculas']:
-        if x['id'] == int(id):
-            return redirect("/" + x['titulo'])
 
     return redirect(url_for('carrito'))
 
@@ -279,15 +281,14 @@ def comprarElemento(id):
                 data_dictionary = ast.literal_eval(data_file.read())
         except IOError:
             flash('¡El usuario no existe!')
+        catalogue_data = open(os.path.join(
+            app.root_path, 'catalogue/catalogo.json'), encoding="utf-8").read()
+        catalogue = json.loads(catalogue_data)
+        for x in catalogue['peliculas']:
+            if x['id'] == int(id):
+                pelicula = x
         saldo = data_dictionary.get('saldo')
-        if saldo >= session['total']:
-            catalogue_data = open(os.path.join(
-                app.root_path, 'catalogue/catalogo.json'), encoding="utf-8").read()
-            catalogue = json.loads(catalogue_data)
-
-            for x in catalogue['peliculas']:
-                if x['id'] == int(id):
-                    pelicula = x
+        if saldo >= pelicula['precio']:
 
             ids_in_cart = [int(id)]
 

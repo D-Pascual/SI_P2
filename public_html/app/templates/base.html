@@ -34,7 +34,8 @@
                         <li><a href="#" class="link_opciones">Usuario: {{ session['usuario'] }}</a></li>
                         <li><a href="{{ url_for('saldo') }}" class="link_opciones">Saldo: {{ session['saldo'] }}€</a></li>
                         <li><a href="{{ url_for('logout', user=session['usuario']) }}" class="link_opciones">Cerrar sesión</a></li>
-                        <li><a href="{{ url_for('pedidos', user=session['usuario']) }}" class="link_opciones">Historial de pedidos</a></li>
+                        <li><a href="{{ url_for('pedidos') }}" class="link_opciones">Historial de pedidos</a></li>
+                        <li><a href="{{ url_for('coleccion') }}" class="link_opciones">Mi colección</a></li>
                     {% else %}
                         <li><a href="{{ url_for('sesion') }}" class="link_opciones">Sesión</a></li>
                     {% endif %}
@@ -70,7 +71,7 @@
             </nav>
 
             <nav class="cuadro3">
-                <br><strong>Usuarios conectados:</strong> <p id="numUsers" class="blink"></p>
+                <br><strong>Usuarios conectados:</strong> <p id="numUsers"></p>
             </nav>
         </div>
         

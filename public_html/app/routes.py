@@ -28,9 +28,15 @@ def index():
             for x in catalogue['peliculas']:
                 if pelicula.lower() in x['titulo'].lower():
                     movies.append(x)
+            if not movies:
+                flash('La búsqueda "' + pelicula + '" no ha producido resultados. Por favor, realiza otra búsqueda')
+                return render_template('index.html', title="Home", movies=catalogue['peliculas'], session=session)
             return render_template('index.html', title="Home", movies=movies, session=session)
         elif 'Filtrado' in request.form:
             pelicula = request.form['Filtrado']
+            if pelicula == 'Filtrar por':
+                flash('Introduce un filtro válido')
+                return render_template('index.html', title="Home", movies=catalogue['peliculas'], session=session)
             movies = []
             for x in catalogue['peliculas']:
                 if pelicula.lower() in x['genero'].lower():
@@ -40,13 +46,28 @@ def index():
     return render_template('index.html', title="Home", movies=catalogue['peliculas'], session=session)
 
 
+
 @app.route('/<titulo>')
 def detalle(titulo):
     catalogue_data = open(os.path.join(
         app.root_path, 'catalogue/catalogo.json'), encoding="utf-8").read()
     catalogue = json.loads(catalogue_data)
     movies = catalogue['peliculas']
-    return render_template('detail.html', selection=next((item for item in movies if item["titulo"] == titulo), False))
+    pelicula = next((item for item in movies if item["titulo"] == titulo), False)
+    
+    if 'logged_in' in session:
+        historial_dir = open(os.path.join(app.root_path, 'usuarios',
+                                          session['usuario'], 'historial.json'), encoding="utf-8").read()
+        compradas = []
+        historial = json.loads(historial_dir)
+        datosHistorial = historial['historial']
+        for x in datosHistorial:
+            for y in x['peliculas']:
+                compradas.append(y)
+        if pelicula['id'] in compradas:
+            return render_template('detail.html', coleccion='true', selection=pelicula)
+    
+    return render_template('detail.html', selection=pelicula)
 
 
 @app.route('/sesion')
@@ -173,6 +194,27 @@ def pedidos():
         datosHistorial = historial['historial']
 
         return render_template("pedidos.html", datosHistorial=datosHistorial, movies=catalogue['peliculas'])
+    redirect(url_for('index'))
+    
+    
+@app.route("/coleccion")
+def coleccion():
+    catalogue_data = open(os.path.join(
+        app.root_path, 'catalogue/catalogo.json'), encoding="utf-8").read()
+    catalogue = json.loads(catalogue_data)
+    if 'logged_in' in session:
+        historial_dir = open(os.path.join(app.root_path, 'usuarios',
+                                          session['usuario'], 'historial.json'), encoding="utf-8").read()
+        movies = []
+        historial = json.loads(historial_dir)
+        datosHistorial = historial['historial']
+        for x in datosHistorial:
+            for y in x['peliculas']:
+                for z in catalogue['peliculas']:
+                    if y == z['id']:
+                        movies.append(z)
+
+        return render_template("coleccion.html", movies=movies)
     redirect(url_for('carrito'))
 
 
@@ -265,7 +307,7 @@ def comprarCarrito():
             flash('¡Carrito comprado!')
             return redirect(url_for('carrito'))
         else:
-            flash('No tienes suficiente saldo')
+            flash('No tienes suficiente saldo. Haz click en saldo (barra lateral) para añadir más')
             return redirect(url_for('carrito'))
     else:
         flash('¡Para comprar debes estar logueado!')
@@ -301,7 +343,7 @@ def comprarElemento(id):
             data = {
                 "id": idPedido,
                 "fecha": str(date.today()),
-                "precio": session['total'],
+                "precio": pelicula['precio'],
                 "peliculas": ids_in_cart
             }
             datosHistorial.append(data)
@@ -328,7 +370,7 @@ def comprarElemento(id):
             flash('¡Articulo comprado!')
             return redirect(url_for('carrito'))
         else:
-            flash('No tienes suficiente saldo')
+            flash('No tienes suficiente saldo. Haz click en saldo (navegador) para añadir más')
             return redirect(url_for('carrito'))
     else:
         flash('¡Para comprar debes estar logueado!')
@@ -371,5 +413,5 @@ def aumentarSaldo():
 
 @app.route('/connectedUsers')
 def connectedUsers():
-    return jsonify(result = random.randrange(1,200))
+    return jsonify(result = random.randrange(150,200))
 

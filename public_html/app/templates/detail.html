@@ -19,9 +19,13 @@
             Director/es: {{ selection["director"] }}<br>
             Género/s: {{ selection["genero"] }}<br><br>
             Precio: {{ selection["precio"] }}€<br><br>
+            {% if coleccion %}
+                <strong>Ya has comprado este artículo</strong>
+            {% else %}
             <form action="{{ url_for('add_to_cart', id=selection.id) }}">
             <input type="submit" value="Añadir al carrito" />
             </form>
+            {% endif %}
         </div>
     </article>
 {% endblock %}

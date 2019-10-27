@@ -1,0 +1,323 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Style the header */
+
+header {
+    background: #741212;
+    margin-bottom: 20px;
+    padding-top: 1px;
+    width: 100%;
+    border-bottom: 8px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    font-family: "Courier New";
+    text-shadow: 3px 2px rgb(7, 0, 5);
+}
+
+.cuadro1 {
+    border-style: ridge;
+    width: 100%;
+    background: #ccc;
+    padding: 10px;
+    height: 210px;
+    padding-right: 25px;
+}
+
+.cuadro2 {
+    border-style: ridge;
+    width: 100%;
+    background: #ccc;
+    padding: 10px;
+    height: 320px;
+    padding-right: 25px;
+}
+
+.cuadro3 {
+    border-style: ridge;
+    width: 100%;
+    background: #ccc;
+    padding: 10px;
+    height: 120px;
+    padding-right: 25px;
+}
+
+#numUsers {
+    text-align: center;
+    font-size: x-large;
+    background: rgb(219, 40, 27);
+}
+
+.blink {
+    animation: blinker 1s step-start infinite;
+  }
+  
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+#Buscar_por {
+    font-weight: bold;
+}
+
+
+/* Sidebar design */
+
+#menu {
+    overflow: hidden;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #ffffff;
+    border-style: inset;
+}
+
+.link_opciones {
+    display: block;
+    color: #000;
+    font-weight: bold;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h6 {
+    padding: 5px;
+    text-align: right;
+    font-size: 15px;
+    color: white;
+    float: left;
+}
+
+a {
+    color: white;
+}
+
+
+/* Style the list inside the menu */
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.busqueda {
+    float: right;
+}
+
+.article {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    height: 60%;
+    width: 82%;
+    background-color: #f1f1f1;
+    border-style: outset;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.article2 {
+    float: left;
+    padding: 20px;
+    height: 60%;
+    width: 100%;
+    margin: auto;
+    background-color: #f1f1f1;
+}
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 2.5rem;
+    /* Footer height */
+}
+
+.login {
+    text-align: right;
+    padding: 20px;
+    height: 65%;
+    width: 35%;
+    min-width: 300px;
+    position: absolute;
+    left: 15%;
+    background-color: #C1C1C1;
+}
+
+.register {
+    text-align: right;
+    padding: 20px;
+    height: 65%;
+    width: 35%;
+    min-width: 300px;
+    position: absolute;
+    left: 51%;
+    background-color: #C1C1C1;
+}
+
+.logo {
+    padding-left: 3%;
+    padding-bottom: 3%;
+    float: left;
+    width: 300px;
+}
+
+.foto {
+    float: left;
+    padding: 5px;
+    width: 197px;
+}
+
+.navdiv {
+    padding: 5px;
+    width: 230px;
+}
+
+#titulo_detalle {
+    text-align: center;
+}
+
+desc {
+    float: left;
+    padding: 20px;
+    width: 70%;
+}
+
+.detalle_col {
+    background-color: #f1f1f1;
+    border-style: groove;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+
+/* Clear floats after the columns */
+
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.sectionindex {
+    display: flex;
+}
+
+
+/* Style the footer */
+
+footer {
+    background-color: #777;
+    position: absolute;
+    text-align: center;
+    color: white;
+    width: 99%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.carrito {
+    width: 80%;
+}
+
+.pedidos {
+    width: 100%;
+}
+
+.tabla_pedidos {
+    text-align: center;
+}
+
+.botones {
+    width: 20%;
+    padding: 10px;
+}
+
+.plegable {
+    height: 0;
+    overflow: hidden;
+}
+
+.plegablePedido {
+    cursor: pointer;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.trPedidos:nth-child(even) {
+    background: #ffffff;
+}
+
+.foot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    /* Footer height */
+}
+
+.flashes {
+    color: red;
+    text-align: center;
+    font-size: large;
+    list-style-type: none;
+}
+
+#saldo {
+    padding: 20px;
+    height: 400px;
+    width: 600px;
+    position: absolute;
+    left: 300px;
+    background-color: #C1C1C1;
+    border-style: double;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+
+@media (max-width: 600px) {
+    nav,
+    article,
+    .carrito {
+        width: 100%;
+        height: auto;
+    }
+}

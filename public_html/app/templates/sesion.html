@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sesión - VideoClub</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Uso de url_for para obtener la ruta de elementos de la página -->
+  <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }}/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src={{ url_for('static', filename='js/validar.js') }}></script>
+  <script src={{ url_for('static', filename='js/passStrenght.js') }}></script>
+</head>
+
+<body>
+  <header>
+      <h1><a href="{{ url_for('index') }}"><img class ="logo" src={{ url_for('static', filename='imagenes/logo.png') }} alt="Logo"/></a>Sesión</h1>
+  </header>
+
+  {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          <ul>
+          {% for message in messages %}
+              <li class=flashes>{{ message }}</li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+  {% endwith %}
+
+  <div class = "page-container">
+    <div class = "content-wrap">
+      <div class="login">
+        <form action="{{ url_for('login') }}" name="login" method="post">
+          <fieldset>
+          <legend>Iniciar sesión</legend>
+          Usuario:
+          {% if last_user %}
+            <input required type="text" name="usuario" placeholder="Escribe aquí" value="{{ last_user }}"><br><br> 
+          {% else %}
+            <input required type="text" name="usuario" placeholder="Escribe aquí"><br><br>         
+          {% endif %}
+          
+          Contraseña:
+          <input required type="password" name="password" placeholder="Escribe aquí"><br><br>
+            <input type="submit" class="busqueda" value="Iniciar sesión" />
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="register">
+        <form action="{{ url_for('registrar') }}" name="registro" method="post" onsubmit="return validarRegistro()">
+          <fieldset>
+            <legend>Registrarse</legend>
+            Usuario:
+            <input required type="text" name="usuario" placeholder="Escribe aquí" pattern="[^()/><\][\\\x22,;|]+" 
+              title="No se puede dejar en blanco, ni usar estos carácteres prohibidos: ^()/><\\\\x22,;|"><br><br>
+            Contraseña:
+            <input required id="clave" type="password" name="password" placeholder="Escribe aquí" pattern=".{8,}" title="Mínimo 8 caracteres"><br><br>
+            <span id = "mensaje"></span><br><br>
+            Confirmación de contraseña:
+            <input required type="password" name="conf_password" placeholder="Escribe aquí"><br><br>
+            Email:
+            <input required type="email" name="email" placeholder="email@example.com"><br><br>
+            Género:
+            <input type="radio" name="genero" value="masculino" checked="checked">Masculino
+            <input type="radio" name="genero" value="femenino">Femenino
+            <input type="radio" name="genero" value="otro">Otro
+            <br><br>
+            Edad:
+            <input required type="number" min="16" max="99" name="edad" ><br><br>
+            Tarjeta de credito:
+            <input required type="tel" name="tarjeta" maxlength="16" placeholder="0000111122223333" pattern="[0-9]{16}"><br><br>
+            <input type="submit" class="busqueda" value="Registrarse" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <footer class = "foot">
+      <p>David y Alain ®</p>
+    </footer>
+  </div>
+</body>
+
+</html>

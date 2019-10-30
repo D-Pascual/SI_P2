@@ -59,16 +59,6 @@ header h1 {
     background: rgb(219, 40, 27);
 }
 
-.blink {
-    animation: blinker 1s step-start infinite;
-}
-
-@keyframes blinker {
-    50% {
-        opacity: 0;
-    }
-}
-
 #Buscar_por {
     font-weight: bold;
 }

@@ -111,6 +111,16 @@ def registrar():
             "historial": []
         }, historial)
         historial.close()
+        
+        
+        session['logged_in'] = True
+        session['usuario'] = usuario['username']
+        session["saldo"] = usuario['saldo']
+        session.modified = True
+
+        resp = make_response(redirect(url_for('index')))
+        resp.set_cookie('username', usuario['username'])
+        return resp
 
     return redirect(url_for('index'))
 

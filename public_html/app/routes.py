@@ -56,16 +56,17 @@ def detalle(titulo):
     pelicula = next((item for item in movies if item["titulo"] == titulo), False)
     
     if 'logged_in' in session:
-        historial_dir = open(os.path.join(app.root_path, 'usuarios',
-                                          session['usuario'], 'historial.json'), encoding="utf-8").read()
-        compradas = []
-        historial = json.loads(historial_dir)
-        datosHistorial = historial['historial']
-        for x in datosHistorial:
-            for y in x['peliculas']:
-                compradas.append(y)
-        if pelicula['id'] in compradas:
-            return render_template('detail.html', coleccion='true', selection=pelicula)
+        if pelicula:
+            historial_dir = open(os.path.join(app.root_path, 'usuarios',
+                                            session['usuario'], 'historial.json'), encoding="utf-8").read()
+            compradas = []
+            historial = json.loads(historial_dir)
+            datosHistorial = historial['historial']
+            for x in datosHistorial:
+                for y in x['peliculas']:
+                    compradas.append(int(y))
+            if int(pelicula['id']) in compradas:
+                return render_template('detail.html', coleccion='true', selection=pelicula)
     
     return render_template('detail.html', selection=pelicula)
 
